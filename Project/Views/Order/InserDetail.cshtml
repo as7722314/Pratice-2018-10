@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "InserDetail";
+}
+
+<h2>InserDetail</h2>
+
+<table>
+    <tr>
+        <td>訂單編號</td>
+        <td>@Model.OrderID</td>
+    </tr>
+    <tr>
+        <td>客戶名稱</td>
+        <td>@Model.CustomerID</td>
+    </tr>
+    <tr>
+        <td>負責員工</td>
+        <td>@Model.EmployeeID</td>
+    </tr>
+    <tr>
+        <td>出貨公司</td>
+        <td>@Model.ShipperID</td>
+    </tr>
+    <tr>
+        <td>訂購日期</td>
+        <td>@Model.OrderDate</td>
+    </tr>
+    <tr>
+        <td>出貨日期</td>
+        <td>@Model.ShippedDate</td>
+    </tr>
+    <tr>
+        <td>需要日期</td>
+        <td>@Model.RequiredDate</td>
+    </tr>
+</table>

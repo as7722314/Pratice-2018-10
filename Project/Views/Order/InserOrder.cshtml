@@ -1,0 +1,65 @@
+﻿@model Project.Models.Orders
+@{
+    ViewBag.Title = "InserOrder";
+}
+
+<h2>InserOrder</h2>
+@using (Html.BeginForm("InserDetail", "Order", FormMethod.Post))
+{
+<table>
+
+    <tr>
+        <td>@Html.LabelFor(model => model.CustomerID)</td>
+        <td>@Html.DropDownListFor(model => model.CustomerID, (List<SelectListItem>)ViewBag.customerlist, "請選擇....")</td>
+
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.EmployeeID)</td>
+        <td>@Html.DropDownListFor(model => model.EmployeeID, (List<SelectListItem>)ViewBag.namelist, "請選擇...")</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.OrderDate)</td>
+        <td>@Html.TextBoxFor(model => model.OrderDate, new { type = "date", @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.ShippedDate)</td>
+        <td>@Html.TextBoxFor(model => model.ShippedDate, new { type = "date", @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.RequiredDate)</td>
+        <td>@Html.TextBoxFor(model => model.RequiredDate, new { type = "date", @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.ShipperID)</td>
+        <td>@Html.DropDownListFor(model => model.ShipperID, (List<SelectListItem>)ViewBag.shipperlist, "請選擇...")</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.Freight)</td>
+        <td>@Html.TextBoxFor(model => model.Freight, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.ShipRegion)</td>
+        <td>@Html.TextBoxFor(model => model.ShipRegion, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.ShipCountry)</td>
+        <td>@Html.TextBoxFor(model => model.ShipCountry, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.ShipCity)</td>
+        <td>@Html.TextBoxFor(model => model.ShipCity, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.ShipPostalCode)</td>
+        <td>@Html.TextBoxFor(model => model.ShipPostalCode, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.ShipAddress)</td>
+        <td>@Html.TextBoxFor(model => model.ShipAddress, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="確認" /></td>
+        <td><input type="reset" value="清除" /></td>
+    </tr>
+</table>
+}

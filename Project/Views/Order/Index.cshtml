@@ -1,0 +1,44 @@
+﻿@model Project.Models.Index
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>訂單查詢</h2>
+
+@using (Html.BeginForm("Search", "Order", FormMethod.Post))
+{
+<table>
+    
+    <tr>
+        <td>@Html.LabelFor(model => model.OrderID)</td>
+        <td>@Html.TextBoxFor(model => model.OrderID, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.CompanyName)</td>
+        <td>@Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.EmployeeID)</td>
+        <td>@Html.DropDownListFor(model => model.EmployeeID, (List<SelectListItem>)ViewBag.namelist, "請選擇...")</td>        
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.ShipperID)</td>
+        <td>@Html.DropDownListFor(model => model.ShipperID, (List<SelectListItem>)ViewBag.shipperlist, "請選擇...")</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.OrderDate)</td>
+        <td>@Html.TextBoxFor(model => model.OrderDate, new {type="date", @class = "form-control" })</td>
+</tr>
+    <tr>
+        <td>@Html.LabelFor(model => model.ShippedDate)</td>
+        <td>@Html.TextBoxFor(model => model.ShippedDate, new { type = "date", @class = "form-control" })</td>
+    </tr>
+   
+    <tr>
+        <td><input type="submit" value="查詢" /></td>
+        <td><input type="reset" value="清除" /></td>        
+        <td>@Html.ActionLink("新增訂單", "InserOrder", "Order")</td>
+    </tr>
+</table>
+}
+
