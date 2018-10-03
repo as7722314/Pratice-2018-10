@@ -27,7 +27,7 @@ namespace Project.Models.Service
             dataAdapter.Fill(ds);
             DataTable dataTable = ds.Tables[0];
             List<Index> data = new List<Index>();
-
+            
             foreach(DataRow i in dataTable.Rows)
             {
                 data.Add(new Index()
