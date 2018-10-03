@@ -15,13 +15,19 @@ namespace Project.Models.Service
             return System.Configuration.ConfigurationManager.ConnectionStrings["Dbconnect"].ConnectionString;
         }
         */
-        public List<Index> GetOrders()
+        public List<Index> GetOrders(Index arg)
         {
             
             DbService dbservice = new DbService();
             String connStr = dbservice.GetConnStr();                
             SqlConnection conn = new SqlConnection(connStr);
             String sql = @"Select a.OrderID,b.CompanyName,a.OrderDate,a.ShippedDate from Sales.Orders a join Sales.Customers b on a.CustomerID = b.CustomerID";
+
+
+
+
+
+
             SqlDataAdapter dataAdapter = new SqlDataAdapter(sql, conn);
             DataSet ds = new DataSet();
             dataAdapter.Fill(ds);

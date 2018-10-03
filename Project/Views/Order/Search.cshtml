@@ -1,8 +1,24 @@
-﻿@model Project.Models.Index
+﻿@using Project.Models
+@model List<Index>
 @{
     ViewBag.Title = "Search";
 }
 
 <h2>查詢結果</h2>
-
-@Model.CompanyName
+<table>
+    <tr>
+        <td>訂單編號</td>
+        <td>顧客名稱</td>
+        <td>訂單日期</td>
+        <td>出貨日期</td>        
+    </tr>
+    @foreach (var dr in Model)
+    {
+        <tr>
+            <td>@dr.OrderID</td>
+            <td>@dr.CompanyName</td>
+            <td>@dr.OrderDate</td>
+            <td>@dr.ShippedDate</td>
+        </tr>
+    }
+</table>

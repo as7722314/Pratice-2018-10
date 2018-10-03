@@ -23,10 +23,10 @@ namespace Project.Controllers
         }       
 
         [HttpPost()]
-        public ActionResult Search()
+        public ActionResult Search(Index arg)
         {
             OrderService orderService = new OrderService();         
-            List<Index> orderdata = orderService.GetOrders();
+            List<Index> orderdata = orderService.GetOrders(arg);
             return View(orderdata);
         }
 
