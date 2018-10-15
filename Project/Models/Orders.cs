@@ -45,6 +45,11 @@ namespace Project.Models
         [DisplayName("出貨公司")]
         public int ShipperID { get; set; }
         /// <summary>
+        /// 出貨說明
+        /// </summary>
+        [DisplayName("出貨說明")]
+        public string ShipName { get; set; }
+        /// <summary>
         /// 運費
         /// </summary>
         [DisplayName("運費")]

@@ -8,13 +8,7 @@ using System.Web;
 namespace Project.Models.Service
 {
     public class OrderService
-    {
-        /*
-        private string GetConnStr()
-        {
-            return System.Configuration.ConfigurationManager.ConnectionStrings["Dbconnect"].ConnectionString;
-        }
-        */
+    {       
         public List<Index> GetOrders(Index arg)
         {
             
@@ -100,6 +94,81 @@ namespace Project.Models.Service
             }
             
             return data;
+        }
+
+        public String InserOrder(Orders orders)
+        {
+            var mess = "";
+            DbService dbservice = new DbService();
+            String connStr = dbservice.GetConnStr();
+            SqlConnection conn = new SqlConnection(connStr);
+            String sql = @"Insert into [Sales].[Orders]
+                          ([CustomerID]
+                          ,[EmployeeID]
+                          ,[OrderDate]
+                          ,[RequiredDate]
+                          ,[ShippedDate]
+                          ,[ShipperID]
+                          ,[Freight]
+                          ,[ShipName]
+                          ,[ShipAddress]
+                          ,[ShipCity]
+                          ,[ShipRegion]
+                          ,[ShipPostalCode]
+                          ,[ShipCountry])
+                          VALUES
+                          (@CustomerID
+                          ,@EmployeeID
+                          ,@OrderDate
+                          ,@RequiredDate
+                          ,@ShippedDate
+                          ,@ShipperID
+                          ,@Freight
+                          ,@ShipName
+                          ,@ShipAddress
+                          ,@ShipCity
+                          ,@ShipRegion
+                          ,@ShipPostalCode
+                          ,@ShipCountry)";         //新增訂單
+
+            SqlCommand command = new SqlCommand(sql,conn);
+            command.Parameters.Add(new SqlParameter("@CustomerID", orders.CustomerID));
+            command.Parameters.Add(new SqlParameter("@EmployeeID", orders.EmployeeID));
+            command.Parameters.Add(new SqlParameter("@OrderDate", orders.OrderDate));
+            command.Parameters.Add(new SqlParameter("@RequiredDate", orders.RequiredDate));
+            command.Parameters.Add(new SqlParameter("@ShippedDate", orders.ShippedDate));
+            command.Parameters.Add(new SqlParameter("@ShipperID", orders.ShipperID));
+            command.Parameters.Add(new SqlParameter("@Freight", orders.Freight));
+            command.Parameters.Add(new SqlParameter("@ShipName", orders.ShipName));
+            command.Parameters.Add(new SqlParameter("@ShipAddress", orders.ShipAddress));
+            command.Parameters.Add(new SqlParameter("@ShipCity", orders.ShipCity));
+            command.Parameters.Add(new SqlParameter("@ShipRegion", orders.ShipRegion));
+            command.Parameters.Add(new SqlParameter("@ShipPostalCode", orders.ShipPostalCode));
+            command.Parameters.Add(new SqlParameter("@ShipCountry", orders.ShipCountry));
+            conn.Open();
+
+            SqlTransaction transaction = conn.BeginTransaction();
+            command.Transaction = transaction;
+            try
+            {
+                command.ExecuteNonQuery();
+                transaction.Commit();
+                mess = "新增成功";
+            }
+            catch(Exception)
+            {
+                transaction.Rollback();
+                mess = "新增失敗";
+                throw;                
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            //int neworderid = Convert.ToInt32(command.ExecuteScalar());
+            return mess;
+
         }
     }
 }

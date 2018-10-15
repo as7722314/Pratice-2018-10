@@ -41,9 +41,11 @@ namespace Project.Controllers
             return View();
         }
         [HttpPost()]
-        public ActionResult InserDetail(Orders orders)
+        public ActionResult InserOrder(Orders orders)
         {
-            return View(orders);
+            OrderService orderservice = new OrderService();
+            var mess = orderservice.InserOrder(orders);
+            return View();
         }
 
     }

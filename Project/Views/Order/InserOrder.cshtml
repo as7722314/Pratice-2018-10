@@ -34,6 +34,10 @@
         <td>@Html.DropDownListFor(model => model.ShipperID, (List<SelectListItem>)ViewBag.shipperlist, "請選擇...")</td>
     </tr>
     <tr>
+        <td>@Html.LabelFor(model => model.ShipName)</td>
+        <td>@Html.TextBoxFor(model => model.ShipName, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
         <td>@Html.LabelFor(model => model.Freight)</td>
         <td>@Html.TextBoxFor(model => model.Freight, new { @class = "form-control" })</td>
     </tr>

@@ -12,7 +12,7 @@ namespace Project.Models.Service
     {
         public List<SelectListItem> GetName()
         {            
-            //List<SelectListItem> employeesname = new List<SelectListItem>();
+            
 
             DbService dbservice = new DbService();
             String connStr = dbservice.GetConnStr();            
