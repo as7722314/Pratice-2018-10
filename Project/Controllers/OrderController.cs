@@ -45,7 +45,7 @@ namespace Project.Controllers
         {
             OrderService orderservice = new OrderService();
             var mess = orderservice.InserOrder(orders);
-            return View();
+            return RedirectToAction("Index", "Order", null);
         }
 
     }
